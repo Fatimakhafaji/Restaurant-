@@ -4,16 +4,16 @@ import mongoose from 'mongoose';
    
      name: {
       type: String,
-      required: [true, 'Enter Restaurant Name'],
+      required: true,
       unique: true,
       trim: true,
-      minlength: [2, 'Name must be at least 2 characters long'],
-      maxlength: [100, 'Name must not exceed 100 characters']
+      minlength: 2,
+      maxlength: 100
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: [true, 'Restaurant owner is required']
+      required: true
     },
     description: {
       type: String,

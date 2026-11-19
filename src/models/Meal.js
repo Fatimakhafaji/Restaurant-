@@ -1,4 +1,3 @@
-//const { string } = require('joi');
 import mongoose from 'mongoose';
 
  const mealSchema = new mongoose.Schema(
@@ -30,10 +29,8 @@ import mongoose from 'mongoose';
     category: {
       type: String,
       required: true,
-      enum: {
-        values: ['appetizer', 'main course', 'dessert', 'beverage', 'side dish'],
-        message: 'this is food category should be in the list'
-      }
+      enum:  ['appetizer', 'main course', 'dessert', 'beverage', 'side dish'],
+       
     },
     ingredients: {
       type: String,

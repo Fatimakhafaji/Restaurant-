@@ -29,8 +29,6 @@ export const connectDB = async () => {
     //   await Restaurant.createCollection();
     //   await Meal.createCollection();
     //   await User.createCollection();
-    
-    // console.log("تم إنشاء الكيانات الثلاثة بنجاح!");
   } catch (error) {
     console.error(`Error: ${error.message}`);
     process.exit(1);

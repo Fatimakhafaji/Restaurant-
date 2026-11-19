@@ -22,14 +22,10 @@ import bcrypt from 'bcryptjs';
       type: String,
       required: true,
       minlength: 6,
-      select: false 
     },
     role: {
       type: String,
-      enum: {
-        values: ['admin', 'restaurant_owner', 'client'],
-        message: 'role should be admin or owner or client'
-      },
+      enum: ['admin', 'restaurant_owner', 'client'],
       default: 'client'
     },
     phone: {
@@ -40,24 +36,24 @@ import bcrypt from 'bcryptjs';
       type: String,
       trim: true
     },
-    // createdAt: {
-    //   type: "timestamp",
-    //   createDate: true,  
-    // },
+    createdAt: {
+      type: "timestamp",
+      createDate: true,  
+    },
   },
  
 );
 export const User = mongoose.model('User', userSchema);
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+// userSchema.pre('save', async function (next) {
+//   if (!this.isModified('password')) return next();
+//   const salt = await bcrypt.genSalt(10);
+//   this.password = await bcrypt.hash(this.password, salt);
+//   next();
+// });
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
+// userSchema.methods.matchPassword = async function (enteredPassword) {
+//   return await bcrypt.compare(enteredPassword, this.password);
+// };
 
 
