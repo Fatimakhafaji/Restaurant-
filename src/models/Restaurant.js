@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
  const restaurantSchema = new mongoose.Schema(
   {
    
@@ -57,5 +58,5 @@ import mongoose from 'mongoose';
     
 );
 
-export const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+module.exports = mongoose.model('Restaurant', restaurantSchema);
 

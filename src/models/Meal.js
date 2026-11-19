@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-
- const mealSchema = new mongoose.Schema(
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const mealSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -73,4 +73,4 @@ import mongoose from 'mongoose';
   },
 
 );
-export const Meal = mongoose.model('Meal', mealSchema);
+module.exports = mongoose.model('Meal', mealSchema);

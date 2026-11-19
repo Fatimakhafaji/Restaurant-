@@ -3,7 +3,7 @@ const User = require('../models/User');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 
-export const protect = catchAsync(async (req, res, next) => {
+ const protect = catchAsync(async (req, res, next) => {
   let token;
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
@@ -24,7 +24,7 @@ export const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-export const restrictTo = (...roles) => {
+ const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(new AppError('dont hava permission', 403));
@@ -32,3 +32,7 @@ export const restrictTo = (...roles) => {
     next();
   };
 };
+
+module.exports  ={
+  protect , restrictTo
+}

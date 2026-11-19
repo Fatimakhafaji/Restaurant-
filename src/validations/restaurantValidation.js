@@ -1,7 +1,8 @@
 const Joi = require('joi');
+const { registerSchema } = require('./userValidation');
 
 
-export const createRestaurantSchema = Joi.object({
+ const createRestaurantSchema = Joi.object({
   name: Joi.string().min(2).max(100).required(),
   description: Joi.string().min(10).max(500).required(),
   cuisine: Joi.array().items(Joi.string()).min(1).required(),
@@ -18,7 +19,7 @@ export const createRestaurantSchema = Joi.object({
   image: Joi.string().optional()
 });
 
-export const updateRestaurantSchema = Joi.object({
+ const updateRestaurantSchema = Joi.object({
   name: Joi.string().min(2).max(100).optional(),
   description: Joi.string().min(10).max(500).optional(),
   cuisine: Joi.array().items(Joi.string()).min(1).optional(),
@@ -35,3 +36,8 @@ export const updateRestaurantSchema = Joi.object({
   isActive: Joi.boolean().optional(),
   image: Joi.string().optional()
 });
+
+
+module.exports={
+  createRestaurantSchema,updateRestaurantSchema
+}

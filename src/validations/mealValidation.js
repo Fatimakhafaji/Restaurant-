@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 
-export const createMealSchema = Joi.object({
+ const createMealSchema = Joi.object({
   name: Joi.string().min(2).max(100).required(),
   restaurant: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
   description: Joi.string().min(5).max(500).required(),
@@ -20,7 +20,7 @@ export const createMealSchema = Joi.object({
   image: Joi.string().optional()
 });
 
-export const updateMealSchema = Joi.object({
+ const updateMealSchema = Joi.object({
   name: Joi.string().min(2).max(100).optional(),
   description: Joi.string().min(5).max(500).optional(),
   price: Joi.number().min(0).optional(),
@@ -37,3 +37,7 @@ export const updateMealSchema = Joi.object({
   isAvailable: Joi.boolean().optional(),
   image: Joi.string().optional()
 });
+
+module.exports={
+  createMealSchema , updateMealSchema
+}
