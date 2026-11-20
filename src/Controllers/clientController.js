@@ -37,7 +37,6 @@ exports.getClientMeals = catchAsync(async (req, res, next) => {
   });
 });
 
-// 
 exports.getClientRestaurants = catchAsync(async (req, res, next) => {
   const filter = { isActive: true };
 

@@ -1,4 +1,4 @@
-// import mongoose from 'mongoose';
+//  mongoose from 'mongoose';
 const mongoose = require('mongoose');
  const restaurantSchema = new mongoose.Schema(
   {
@@ -52,7 +52,7 @@ const mongoose = require('mongoose');
     },
     image: {
       type: String,
-      default: 'default-restaurant.jpg'//عدلي مسار الصورة 
+      default: '/images/restaurant.jpg'
     }
     }
     

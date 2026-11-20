@@ -1,4 +1,3 @@
-// import mongoose from 'mongoose';
 const mongoose = require('mongoose');
 const mealSchema = new mongoose.Schema(
   {
@@ -33,9 +32,14 @@ const mealSchema = new mongoose.Schema(
        
     },
     ingredients: {
-      type: String,
+      type: [String],
       required: true,
-      validate: array => array.length > 0
+      validate: {
+        validator: function (arr) {
+        return Array.isArray(arr) && arr.length > 0;
+    },
+    message: 'Ingredients must be a non-empty array'
+  }
     },
     calories: {
       type: Number,
@@ -68,7 +72,7 @@ const mealSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default: 'default-meal.jpg'//عدلي صورة 
+      default: '/images/meals.jpg'
     }
   },
 
